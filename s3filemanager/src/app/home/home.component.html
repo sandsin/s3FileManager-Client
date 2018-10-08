@@ -1,0 +1,41 @@
+﻿<h1 class="display-4">Hello, {{userName}}</h1>
+<p class="lead">This is a simple File Manager application to manage S3 Files</p>
+
+<div class="container">
+    <p class="lead">File viewer</p>
+    <table >
+        <tr cellspacing="10">
+            <td width="33%">
+                <a class="btn btn-primary btn-lg" href="#" role="button" (click)="onView()">List S3 Files</a>
+            </td>
+            <td width="33%">
+            <a class="btn btn-primary btn-lg" href="#" role="button" (click)="onHide()">Hide Files</a>
+            </td>
+        </tr>
+    </table>
+    <div *ngIf="viewFiles">
+    <ul *ngIf="fileList">
+        <li *ngFor="let file of fileList">
+            <!-- <a routerLink="/details/{{user.id}}">{{ user.name }}</a>-->
+
+            <ul>
+                <li><a (click)="onFileDownload(file)">{{ file}}</a></li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+    <p class="lead">File uploader</p>
+    <input type="file" (change)="onFileSelected($event)"/>
+    <a class="btn btn-primary btn-lg" href="#" role="button" (click)="onUpload()">Upload Files</a>
+
+    <p>{{uploadResult}}</p>
+
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="onSignout()">SignOut</a>
+
+</div>
+
